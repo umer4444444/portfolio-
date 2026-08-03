@@ -1,0 +1,217 @@
+.skillsSection {
+  padding: 8rem 0 4rem;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sectionHeader {
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+.labelWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.line {
+  width: 40px;
+  height: 2px;
+  background-color: var(--accent);
+}
+
+.label {
+  font-family: var(--font-inter);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.title {
+  font-family: var(--font-playfair);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-bottom: 6rem;
+}
+
+.categoryBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.categoryTitle {
+  font-family: var(--font-playfair);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .skillGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .skillGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.skillCard {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.spotlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+    rgba(194, 112, 62, 0.06),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.skillCard:hover .spotlight {
+  opacity: 1;
+}
+
+.skillCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(194, 112, 62, 0.08);
+  border-color: var(--accent);
+}
+
+.skillIcon {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--bg-tertiary);
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.skillCard:hover .skillIcon {
+  background-color: var(--accent-light);
+}
+
+.skillName {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.marqueeContainer {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg-tertiary);
+  padding: 2rem 0;
+  position: relative;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.marqueeContainer::before,
+.marqueeContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+}
+
+.marqueeContainer::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-tertiary), transparent);
+}
+
+.marqueeContainer::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-tertiary), transparent);
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+  gap: 3rem;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+.marqueeItem {
+  font-family: var(--font-playfair);
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.marqueeItem:hover {
+  color: var(--accent);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

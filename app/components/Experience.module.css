@@ -1,0 +1,204 @@
+.section {
+  padding: 100px 5%;
+  background-color: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  font-family: var(--font-inter);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.title {
+  font-family: var(--font-playfair);
+  font-size: 3rem;
+  color: var(--text-primary);
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Center line */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background-color: var(--border);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+.lineProgress {
+  position: absolute;
+  width: 2px;
+  background-color: var(--accent);
+  top: 0;
+  left: 50%;
+  margin-left: -1px;
+  z-index: 1;
+  transform-origin: top;
+  animation: drawLine linear both;
+  animation-timeline: view(y);
+}
+
+@keyframes drawLine {
+  from {
+    height: 0%;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+.entry {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+
+.left {
+  left: 0;
+  text-align: right;
+}
+
+.right {
+  left: 50%;
+  text-align: left;
+}
+
+.dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--accent);
+  border: 4px solid var(--bg-secondary);
+  border-radius: 50%;
+  z-index: 2;
+  top: 30px;
+}
+
+.left .dot {
+  right: -10px;
+}
+
+.right .dot {
+  left: -10px;
+}
+
+.card {
+  background-color: var(--bg-primary);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.dateBadge {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: var(--accent-light);
+  color: var(--accent);
+  font-family: var(--font-inter);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.role {
+  font-family: var(--font-playfair);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.company {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  color: var(--olive);
+  font-weight: 500;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.left .company {
+  justify-content: flex-end;
+}
+
+.right .company {
+  justify-content: flex-start;
+}
+
+.companyIcon {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+
+.description {
+  font-family: var(--font-inter);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .timeline::after, .lineProgress {
+    left: 20px;
+  }
+  
+  .entry {
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 0;
+  }
+  
+  .left {
+    text-align: left;
+    left: 0;
+  }
+
+  .right {
+    left: 0;
+  }
+  
+  .left .dot, .right .dot {
+    left: 10px;
+    right: auto;
+  }
+
+  .left .company {
+    justify-content: flex-start;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+}

@@ -1,0 +1,31 @@
+.reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.up {
+  transform: translateY(40px);
+}
+
+.reveal.down {
+  transform: translateY(-30px);
+}
+
+.reveal.left {
+  transform: translateX(-40px);
+}
+
+.reveal.right {
+  transform: translateX(40px);
+}
+
+.reveal.scale {
+  transform: scale(0.92);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
